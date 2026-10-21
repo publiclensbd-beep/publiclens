@@ -66,4 +66,4 @@ export const DEMO_ARTICLES = [
     title: 'ডেমো: ছোট ব্যবসায়ীদের জন্য ডিজিটাল হিসাবের কর্মশালা',
     excerpt: 'কাল্পনিক একটি কর্মশালার নমুনা প্রতিবেদন।',
     category: 'economy',
-    author: 'PublicLens ডেস্ক
+    author: 'PublicLens ডেস্ক',
