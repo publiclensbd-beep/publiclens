@@ -1,0 +1,275 @@
+/* ---------- লগইন ---------- */
+.login-wrap {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--red);
+  border-radius: 8px;
+  padding: 24px 20px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+.login-card h1 {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+.login-card label {
+  display: block;
+  text-align: left;
+  font-weight: 700;
+  font-size: 14px;
+  margin: 12px 0 4px;
+}
+.login-card input {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+}
+.login-card input:focus {
+  border-color: var(--red);
+}
+.login-card .btn {
+  width: 100%;
+  margin-top: 16px;
+}
+.login-error {
+  background: #fdecee;
+  color: var(--red-dark);
+  border: 1px solid #f5c2c9;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-top: 12px;
+  text-align: left;
+}
+
+/* ---------- অ্যাডমিন কাঠামো ---------- */
+.admin-bar {
+  background: var(--red-dark);
+  color: #fff;
+}
+.admin-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 0;
+  flex-wrap: wrap;
+}
+.admin-bar strong {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 18px;
+}
+.admin-nav {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.admin-nav a,
+.admin-nav button {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.admin-nav a.active,
+.admin-nav a:hover,
+.admin-nav button:hover {
+  background: #fff;
+  color: var(--red-dark);
+}
+.admin-main {
+  padding: 18px 0 40px;
+}
+.admin-main h1 {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+/* ---------- ড্যাশবোর্ড কার্ড ---------- */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 12px 0 20px;
+}
+.stat-card {
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--red);
+  border-radius: 6px;
+  padding: 12px;
+}
+.stat-card .num {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--red);
+  line-height: 1.2;
+}
+.stat-card .label {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ---------- টেবিল ---------- */
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 520px;
+}
+.admin-table th,
+.admin-table td {
+  padding: 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: middle;
+}
+.admin-table th {
+  background: var(--soft);
+  font-weight: 800;
+}
+.badge-published,
+.badge-draft {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.badge-published {
+  background: #e3f6ea;
+  color: #14693a;
+}
+.badge-draft {
+  background: #fff3cd;
+  color: #7a5b00;
+}
+
+/* ---------- ফর্ম ---------- */
+.form-grid {
+  display: grid;
+  gap: 14px;
+  max-width: 760px;
+}
+.form-row label {
+  display: block;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.form-row input[type='text'],
+.form-row input[type='file'],
+.form-row select,
+.form-row textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 16px;
+  font-family: inherit;
+  background: #fff;
+  outline: none;
+}
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+  border-color: var(--red);
+}
+.form-row textarea {
+  min-height: 220px;
+  line-height: 1.6;
+}
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+}
+.hint {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+/* ---------- বাটন ---------- */
+.admin-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.btn-small {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-small:hover {
+  background: var(--red-dark);
+}
+.btn-outline {
+  background: #fff;
+  color: var(--red);
+  border: 1px solid var(--red);
+}
+.btn-outline:hover {
+  background: var(--soft);
+}
+.btn-danger {
+  background: #fff;
+  color: #b00020;
+  border: 1px solid #b00020;
+}
+.btn-danger:hover {
+  background: #fdecee;
+}
+.btn[disabled],
+.btn-small[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.msg-ok {
+  background: #e3f6ea;
+  color: #14693a;
+  border: 1px solid #b7e4c7;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+@media (min-width: 768px) {
+  .stat-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  }
