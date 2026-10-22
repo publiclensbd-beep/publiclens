@@ -10,6 +10,8 @@ import NotFound from './pages/NotFound.jsx'
 import AdminLogin from './pages/admin/AdminLogin.jsx'
 import AdminLayout from './pages/admin/AdminLayout.jsx'
 import AdminDashboard from './pages/admin/AdminDashboard.jsx'
+import AdminArticles from './pages/admin/AdminArticles.jsx'
+import ArticleForm from './pages/admin/ArticleForm.jsx'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -40,8 +42,9 @@ export default function App() {
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminDashboard />} />
-            <Route path="articles" element={<ComingSoon title="খবর" />} />
-            <Route path="articles/new" element={<ComingSoon title="নতুন খবর" />} />
+            <Route path="articles" element={<AdminArticles />} />
+            <Route path="articles/new" element={<ArticleForm />} />
+            <Route path="articles/:id/edit" element={<ArticleForm />} />
             <Route path="categories" element={<ComingSoon title="ক্যাটেগরি" />} />
             <Route path="*" element={<ComingSoon title="পাতা পাওয়া যায়নি" />} />
           </Route>
