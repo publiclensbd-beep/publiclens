@@ -12,6 +12,7 @@ import AdminLayout from './pages/admin/AdminLayout.jsx'
 import AdminDashboard from './pages/admin/AdminDashboard.jsx'
 import AdminArticles from './pages/admin/AdminArticles.jsx'
 import ArticleForm from './pages/admin/ArticleForm.jsx'
+import AdminCategories from './pages/admin/AdminCategories.jsx'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -21,11 +22,11 @@ function ScrollToTop() {
   return null
 }
 
-function ComingSoon({ title }) {
+function AdminNotFound() {
   return (
     <section>
-      <h1>{title}</h1>
-      <div className="notice-box">এই অংশটি পরের ধাপে যোগ হবে।</div>
+      <h1>পাতা পাওয়া যায়নি</h1>
+      <div className="notice-box">এই ঠিকানায় কোনো পাতা নেই।</div>
     </section>
   )
 }
@@ -45,8 +46,8 @@ export default function App() {
             <Route path="articles" element={<AdminArticles />} />
             <Route path="articles/new" element={<ArticleForm />} />
             <Route path="articles/:id/edit" element={<ArticleForm />} />
-            <Route path="categories" element={<ComingSoon title="ক্যাটেগরি" />} />
-            <Route path="*" element={<ComingSoon title="পাতা পাওয়া যায়নি" />} />
+            <Route path="categories" element={<AdminCategories />} />
+            <Route path="*" element={<AdminNotFound />} />
           </Route>
         </Routes>
       </>
