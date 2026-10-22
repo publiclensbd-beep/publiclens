@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams, Link } from 'react-router-dom'
 import { supabase } from '../../lib/supabaseClient.js'
 import { CATEGORIES } from '../../data/categories.js'
+import CoverUpload from './CoverUpload.jsx'
 import './admin.css'
 
 function makeSlug() {
@@ -22,6 +23,7 @@ export default function ArticleForm() {
   const [body, setBody] = useState('')
   const [category, setCategory] = useState(CATEGORIES[0].slug)
   const [author, setAuthor] = useState('PublicLens ডেস্ক')
+  const [coverImage, setCoverImage] = useState('')
   const [isFeatured, setIsFeatured] = useState(false)
   const [isBreaking, setIsBreaking] = useState(false)
   const [status, setStatus] = useState('draft')
@@ -33,7 +35,8 @@ export default function ArticleForm() {
   const [error, setError] = useState('')
 
   useEffect(() => {
-    document.title = (isEdit ? 'খবর সম্পাদনা' : 'নতুন খবর') + ' | PublicLens অ্যাডমিন'
+    document.title =
+      (isEdit ? 'খবর সম্পাদনা' : 'নতুন খবর') + ' | PublicLens অ্যাডমিন'
     if (!isEdit) return undefined
     let active = true
 
@@ -54,6 +57,7 @@ export default function ArticleForm() {
       setBody(data.body || '')
       setCategory(data.category)
       setAuthor(data.author || 'PublicLens ডেস্ক')
+      setCoverImage(data.cover_image || '')
       setIsFeatured(Boolean(data.is_featured))
       setIsBreaking(Boolean(data.is_breaking))
       setStatus(data.status)
@@ -86,6 +90,7 @@ export default function ArticleForm() {
       body,
       category,
       author: author.trim() || 'PublicLens ডেস্ক',
+      cover_image: coverImage || null,
       is_featured: isFeatured,
       is_breaking: isBreaking,
       status: targetStatus,
@@ -132,6 +137,12 @@ export default function ArticleForm() {
   }
 
   const isPublishedNow = isEdit && status === 'published'
+  const draftLabel = isPublishedNow
+    ? 'অপ্রকাশ করে সেভ'
+    : 'খসড়া সেভ'
+  const publishLabel = isPublishedNow
+    ? 'হালনাগাদ করুন'
+    : 'প্রকাশ করুন'
 
   return (
     <section>
@@ -157,7 +168,7 @@ export default function ArticleForm() {
             onChange={(e) => setExcerpt(e.target.value)}
           />
           <p className="hint">
-            হোমপেজে ও সার্চ ইঞ্জিনে দেখানো ছোট বিবরণ (এক-দুই বাক্য)।
+            হোমপেজে ও সার্চ ইঞ্জিনে দেখানো ছোট বিবরণ।
           </p>
         </div>
 
@@ -185,6 +196,8 @@ export default function ArticleForm() {
             onChange={(e) => setAuthor(e.target.value)}
           />
         </div>
+
+        <CoverUpload value={coverImage} onChange={setCoverImage} />
 
         <div className="form-row">
           <label htmlFor="body">খবরের লেখা *</label>
@@ -216,10 +229,6 @@ export default function ArticleForm() {
           ব্রেকিং নিউজ (চলমান বারে দেখাবে)
         </label>
 
-        <p className="hint">
-          কভার ছবি আপলোডের সুবিধা পরের ধাপে যোগ হবে।
-        </p>
-
         {error && <p className="login-error">{error}</p>}
 
         <div className="admin-actions">
@@ -228,14 +237,14 @@ export default function ArticleForm() {
             disabled={busy}
             onClick={() => save('draft')}
           >
-            {isPublishedNow ? 'অপ্রকাশ করে সেভ' : 'খসড়া সেভ'}
-</button>
+            {draftLabel}
+          </button>
           <button
             className="btn-small"
             disabled={busy}
             onClick={() => save('published')}
           >
-            {isPublishedNow ? 'হালনাগাদ করুন' : 'প্রকাশ করুন'}
+            {publishLabel}
           </button>
           <Link to="/admin/articles" className="btn-small btn-outline">
             বাতিল
