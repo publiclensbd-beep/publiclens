@@ -7,6 +7,9 @@ import CategoryPage from './pages/CategoryPage.jsx'
 import ArticlePage from './pages/ArticlePage.jsx'
 import SearchPage from './pages/SearchPage.jsx'
 import NotFound from './pages/NotFound.jsx'
+import AdminLogin from './pages/admin/AdminLogin.jsx'
+import AdminLayout from './pages/admin/AdminLayout.jsx'
+import AdminDashboard from './pages/admin/AdminDashboard.jsx'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -16,7 +19,37 @@ function ScrollToTop() {
   return null
 }
 
+function ComingSoon({ title }) {
+  return (
+    <section>
+      <h1>{title}</h1>
+      <div className="notice-box">এই অংশটি পরের ধাপে যোগ হবে।</div>
+    </section>
+  )
+}
+
 export default function App() {
+  const { pathname } = useLocation()
+  const inAdmin = pathname.startsWith('/admin')
+
+  if (inAdmin) {
+    return (
+      <>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="articles" element={<ComingSoon title="খবর" />} />
+            <Route path="articles/new" element={<ComingSoon title="নতুন খবর" />} />
+            <Route path="categories" element={<ComingSoon title="ক্যাটেগরি" />} />
+            <Route path="*" element={<ComingSoon title="পাতা পাওয়া যায়নি" />} />
+          </Route>
+        </Routes>
+      </>
+    )
+  }
+
   return (
     <>
       <ScrollToTop />
@@ -33,4 +66,4 @@ export default function App() {
       <Footer />
     </>
   )
-  }
+}
