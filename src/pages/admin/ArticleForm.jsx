@@ -228,4 +228,20 @@ export default function ArticleForm() {
             disabled={busy}
             onClick={() => save('draft')}
           >
-            {isPublishedNow ? 'অপ্রকাশ করে সেভ
+            {isPublishedNow ? 'অপ্রকাশ করে সেভ' : 'খসড়া সেভ'}
+</button>
+          <button
+            className="btn-small"
+            disabled={busy}
+            onClick={() => save('published')}
+          >
+            {isPublishedNow ? 'হালনাগাদ করুন' : 'প্রকাশ করুন'}
+          </button>
+          <Link to="/admin/articles" className="btn-small btn-outline">
+            বাতিল
+          </Link>
+        </div>
+      </div>
+    </section>
+  )
+}
