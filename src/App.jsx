@@ -13,11 +13,23 @@ import AdminDashboard from './pages/admin/AdminDashboard.jsx'
 import AdminArticles from './pages/admin/AdminArticles.jsx'
 import ArticleForm from './pages/admin/ArticleForm.jsx'
 import AdminCategories from './pages/admin/AdminCategories.jsx'
+import { recordView } from './lib/recordView.js'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
   useEffect(() => {
     window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
+
+function ViewTracker() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    const parts = pathname.split('/')
+    if (parts[1] === 'article' && parts[2]) {
+      recordView(parts[2])
+    }
   }, [pathname])
   return null
 }
@@ -57,6 +69,7 @@ export default function App() {
   return (
     <>
       <ScrollToTop />
+      <ViewTracker />
       <Header />
       <main className="container main-area">
         <Routes>
