@@ -5,6 +5,7 @@ import App from './App.jsx'
 import { AuthProvider } from './lib/AuthContext.jsx'
 import { CategoriesProvider } from './lib/CategoriesProvider.jsx'
 import './index.css'
+import './logo.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
