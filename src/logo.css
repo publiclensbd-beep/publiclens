@@ -1,0 +1,13 @@
+.logo-mark {
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+  background-color: transparent;
+  background-image: url("./PublicLens News Logo_20261019_103557_0000.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  color: transparent;
+  font-size: 0;
+  overflow: hidden;
+}
